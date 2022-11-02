@@ -3,6 +3,7 @@ const widen = express(); // Configure Instance
 const fetch = require("node-fetch") // Node fetch, probally not needed 
 const PORT = 5555; // Local Only
 
+const apiKeyCount = 3 // Number of Keys In the Secret Manager(-1, zero Indexed)
 
 const whiteList = [// List of Endpoints that are allowed 
     "assets"
@@ -30,7 +31,7 @@ if(!allowed){
 }
 
 
-let apiIndex = Math.floor(Math.random()*3) + 1 // Picks Random Index
+let apiIndex = Math.floor(Math.random()*apiKeyCount) + 1 // Picks Random Index
 let apiKey = process.env[`API_${apiIndex}`]  // Grabs Key from dotenv
 
 const options = { // Fetch Options
@@ -70,7 +71,7 @@ if(!allowed){
 }
 
 
-let apiIndex = Math.floor(Math.random()*3) + 1 // Picks Random Index
+let apiIndex = Math.floor(Math.random()*apiKeyCount) + 1 // Picks Random Index
 let apiKey = process.env[`API_${apiIndex}`]  // Grabs Key from dotenv
 
   
