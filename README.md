@@ -23,3 +23,23 @@ Add desired endpoint to "whiteList" array as well as this readMe
 ## Codebase
 
 Codebase is currently stored in the google cloud console, must log in as ttdoors@gmail.com to edit
+
+
+## API Keys
+
+Stored in Google Cloud Secret Manager
+
+
+![image](https://user-images.githubusercontent.com/54558961/199534748-da377c32-7c9a-438b-b1ef-9a29a51d1926.png)
+
+### Add Keys
+* Edit Function => Function Details => Security
+* Must follow format of API_x
+* Update APIKeyCount Variable
+
+
+
+![image](https://user-images.githubusercontent.com/54558961/199540217-accebc28-bf01-4767-8cab-0ae65999fbac.png)
+
+![image](https://user-images.githubusercontent.com/54558961/199541019-e507f244-112a-4a3a-bd8a-ad04f8cd8af7.png)
+
