@@ -2,13 +2,12 @@ const express = require('express'); // Routing Framwork
 const widen = express(); // Configure Instance
 const fetch = require("node-fetch") // Node fetch, probally not needed 
 const PORT = 5555; // Local Only
-
-const apiKeyCount = 3 // Number of Keys In the Secret Manager(-1, zero Indexed)
+const cors = require("cors")
 
 const whiteList = [// List of Endpoints that are allowed 
     "assets"
 ]
-
+widen.use(cors)
 widen.listen(PORT, () => { // Starts the server, not sure if we actually need this
   console.log(`Server running on port ${PORT}`);
 })
@@ -31,7 +30,7 @@ if(!allowed){
 }
 
 
-let apiIndex = Math.floor(Math.random()*apiKeyCount) + 1 // Picks Random Index
+let apiIndex = Math.floor(Math.random()*3) + 1 // Picks Random Index
 let apiKey = process.env[`API_${apiIndex}`]  // Grabs Key from dotenv
 
 const options = { // Fetch Options
@@ -46,6 +45,7 @@ const options = { // Fetch Options
  await fetch(widenUrl, options) // Query Widen Data
                   .then(res=>res.json()) // Converts to JSON format
                   .then((data)=> { // Data object now available
+                  console.log(data)
                     res.status(200).json(data)}) // Send the data with a 200 Status
     
 
@@ -71,7 +71,7 @@ if(!allowed){
 }
 
 
-let apiIndex = Math.floor(Math.random()*apiKeyCount) + 1 // Picks Random Index
+let apiIndex = Math.floor(Math.random()*3) + 1 // Picks Random Index
 let apiKey = process.env[`API_${apiIndex}`]  // Grabs Key from dotenv
 
   
@@ -88,6 +88,8 @@ let apiKey = process.env[`API_${apiIndex}`]  // Grabs Key from dotenv
   await fetch(widenUrl, options) // Query Widen Data
                   .then(res=>res.json()) // Converts to JSON format
                   .then((data)=> { // Data object now available
+                    console.log(data)
+
                     res.status(200).json(data)}) // Send the data with a 200 Status
     
 
